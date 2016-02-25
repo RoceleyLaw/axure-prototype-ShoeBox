@@ -1,133 +1,288 @@
-<!doctype html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>0912fsn00</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-<link href="css/styles.css" rel="stylesheet" type="text/css">
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/camera.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.css">
+
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-migrate-1.2.1.js"></script>
+
+    <!--[if lt IE 9]>
+    <html class="lt-ie9">
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/..">
+            <img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820"
+                 alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."/>
+        </a> 
+    </div>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+ 
+    <script src='js/device.min.js'></script> 
 </head>
 
 <body>
-<div class="container-fluid" id="wrapper">
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-        <a class="navbar-brand" href="#">Fate/Stay Night from Roce. CO.</a></div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="defaultNavbar1">
-<ul class="nav navbar-nav navbar-right">
-  <li><a href="花千骨~~.html">LIN</a></li>
-  <li><a href="Untitled-1.html">SABER</a></li>
-  <li><a href="shishiba.html">IRIYA</a></li>
-</ul>
-      </div>
-      <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
-  </nav>
-  <div id="carousel1" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carousel1" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel1" data-slide-to="1"></li>
-      <li data-target="#carousel1" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-      <div class="item active"><img src="images/fate archer lin.jpg" alt="First slide image" width="1000" height="400" class="center-block image-fill">
-        <div class="carousel-caption">
-          <h3>以爱之名</h3>
-          <p>拯救苍生 胸怀天下</p>
+<div class="page">
+    <!--========================================================
+                              HEADER
+    =========================================================-->
+    <header>
+
+        <div class="camera_container">
+            <div id="camera" class="camera_wrap">
+                <div data-thumb="images/slide01_thumb.jpg" data-src="images/slide01.jpg">
+                    <div class="camera_caption fadeIn">
+                    </div>
+                </div>
+                <div data-thumb="images/slide02_thumb.jpg" data-src="images/slide02.jpg">
+                    <div class="camera_caption fadeIn">
+                    </div>
+                </div>
+                <div data-thumb="images/slide03_thumb.jpg" data-src="images/slide03.jpg">
+                    <div class="camera_caption fadeIn">
+                    </div>
+                </div>
+            </div>
+
+            <div class="brand wow fadeIn">
+                <h1 class="brand_name">
+                    <a href="./">Welcome</a>
+                </h1>
+            </div>
         </div>
-      </div>
-      <div class="item"><img src="images/banner2.png" alt="Second slide image" width="1000" height="400" class="center-block image-fill">
-        <div class="carousel-caption">
-          <h3>正义何为</h3>
-          <p>一生为伴 不弃不离</p>
+        
+        <div class="toggle-menu-container">
+            <nav class="nav">
+                <div class="nav_title"></div>
+                <a class="sf-menu-toggle fa fa-bars" href="#"></a>
+                <ul class="sf-menu">
+                    <li class="active">
+                        <a href="./">Home</a>
+                    </li>
+                    <li>
+                        <a href="index-1.html">About</a>
+                        <ul>
+                            <li>
+                                <a href="#">Step 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Step 2</a>
+                                <ul>
+                                    <li>
+                                        <a href="#">SUB-Step 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">SUB-Step 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">SUB-Step 3</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">HELLO</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="index-2.html">COME</a>
+                    </li>
+                    <li>
+                        <a href="index-3.html">ABOUT ME</a>
+                    </li>
+                    <li>
+                        <a href="index-4.html">Contacts</a>
+                    </li>
+                </ul>
+            </nav>            
         </div>
-      </div>
-      <div class="item"><img src="images/banner3.jpg" alt="Third slide image" width="1000" height="400" class="center-block image-fill">
-        <div class="carousel-caption">
-          <h3>此生若梦</h3>
-          <p>只愿一切美满如初见</p>
+
+    </header>
+    <!--========================================================
+                              CONTENT
+    =========================================================-->
+    <main>
+        <section class="well">
+            <div class="container">
+                <h2><em>Welcome</em>to Our Place</h2>
+                <div class="row">
+                    <div class="grid_6">
+                        <div class="img img__border"><div class="lazy-img" style="padding-bottom: 63.0282%;"><img data-src="images/page-1_img01.jpg" alt=""></div></div>
+                        <p class="center indents-1">Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla. Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis.Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla.</p>
+                    </div>
+                    <div class="grid_6">
+                        <div class="img img__border"><div class="lazy-img" style="padding-bottom: 63.0282%;"><img data-src="images/page-1_img02.jpg" alt=""></div></div>
+                        <p class="center indents-1">Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla. Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis.Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla.</p>
+                    </div>
+                </div>
+                <div class="decoration"><a href="#" class="btn">Read more</a></div>
+                <h2><em>Our</em>Cuisine</h2>
+            </div>            
+            <div class="gallery">
+                <div class="gallery_col-1">
+                    <a data-fancybox-group="gallery" href="images/page-1_img03_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 93.96551724137931%;">
+                        <img data-src="images/page-1_img03.jpg" alt="">
+                        <div class="gallery_overlay">
+                            <div class="gallery_caption">
+                                <p><em>Lorem Blandit</em></p>
+                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a data-fancybox-group="gallery" href="images/page-1_img04_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 74.13793103448276%;">
+                        <img data-src="images/page-1_img04.jpg" alt="">
+                        <div class="gallery_overlay">
+                            <div class="gallery_caption">
+                                <p><em>Lorem Blandit</em></p>
+                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a data-fancybox-group="gallery" href="images/page-1_img05_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 94.6551724137931%;">
+                        <img data-src="images/page-1_img05.jpg" alt="">
+                        <div class="gallery_overlay">
+                            <div class="gallery_caption">
+                                <p><em>Lorem Blandit</em></p>
+                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="gallery_col-2">
+                    <a data-fancybox-group="gallery" href="images/page-1_img06_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 52.48322147651007%;">
+                        <img data-src="images/page-1_img06.jpg" alt="">
+                        <div class="gallery_overlay">
+                            <div class="gallery_caption">
+                                <p><em>Lorem Blandit</em></p>
+                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a data-fancybox-group="gallery" href="images/page-1_img07_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 55.97315436241611%;">
+                        <img data-src="images/page-1_img07.jpg" alt="">
+                        <div class="gallery_overlay">
+                            <div class="gallery_caption">
+                                <p><em>Lorem Blandit</em></p>
+                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a data-fancybox-group="gallery" href="images/page-1_img08_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 96.10738255033557%;">
+                        <img data-src="images/page-1_img08.jpg" alt="">
+                        <div class="gallery_overlay">
+                            <div class="gallery_caption">
+                                <p><em>Lorem Blandit</em></p>
+                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="gallery_col-3">
+                    <a data-fancybox-group="gallery" href="images/page-1_img09_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 93.69676320272572%;">
+                        <img data-src="images/page-1_img09.jpg" alt="">
+                        <div class="gallery_overlay">
+                            <div class="gallery_caption">
+                                <p><em>Lorem Blandit</em></p>
+                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a data-fancybox-group="gallery" href="images/page-1_img10_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 72.23168654173765%;">
+                        <img data-src="images/page-1_img10.jpg" alt="">
+                        <div class="gallery_overlay">
+                            <div class="gallery_caption">
+                                <p><em>Lorem Blandit</em></p>
+                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a data-fancybox-group="gallery" href="images/page-1_img11_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 93.69676320272572%;">
+                        <img data-src="images/page-1_img11.jpg" alt="">
+                        <div class="gallery_overlay">
+                            <div class="gallery_caption">
+                                <p><em>Lorem Blandit</em></p>
+                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="parallax parallax1" data-parallax-speed="-0.4">
+            <div class="container">
+                <h2><em>Our </em>Experience</h2>
+                <p class="indents-2">Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla. Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis.Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla. Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis. Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis.Integer convallis orci </p>
+                <a href="#" class="btn">View full menu</a>
+            </div>
+        </section>
+        <section class="well well__offset-1 bg-1">
+            <div class="container">
+                <h2><em>Our </em>Cooks</h2>
+                <div class="row row__offset-1">
+                    <div class="grid_4">
+                        <figure>
+                            <div class="img lazy-img" style="padding-bottom: 101.0810810810811%;"><img data-src="images/page-1_img12.jpg" alt=""></div>
+                            <figcaption>Kevin Grey</figcaption>
+                        </figure>
+                        <h3>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl </h3>
+                        <p>Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis.Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla.</p>
+                    </div>
+                    <div class="grid_4">
+                        <figure>
+                            <div class="img lazy-img" style="padding-bottom: 101.0810810810811%;"><img data-src="images/page-1_img13.jpg" alt=""></div>
+                            <figcaption>Linda Klein</figcaption>
+                        </figure>
+                        <h3>Oeteger convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl </h3>
+                        <p>Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis.Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla.</p>
+                    </div>
+                    <div class="grid_4">
+                        <figure>
+                            <div class="img lazy-img" style="padding-bottom: 101.0810810810811%;"><img data-src="images/page-1_img14.jpg" alt=""></div>
+                            <figcaption>Ann Shelton</figcaption>
+                        </figure>
+                        <h3>Koteger convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl </h3>
+                        <p>Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis.Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla.</p>
+                    </div>
+                </div>
+                <div class="decoration"><a href="#" class="btn">Read more</a></div>
+            </div>
+        </section>
+        <section class="well well__offset-2">
+            <div class="container center">
+                <h2><em>Make </em>a Reservation</h2>
+                <p class="indents-2">Fnteger convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla. Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis.Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol.</p>
+                <address class="address-1">
+                    <dl><dt>Address:</dt> <dd>4578 Marmora Road, Glasgow DA04 89GR</dd></dl>
+                    <p><em>800 2345-6789</em></p>
+                </address>
+            </div>
+        </section>
+    </main>
+
+    <!--========================================================
+                              FOOTER
+    =========================================================-->
+    <footer>
+        <div class="container">
+            <ul class="socials">
+                <li><a href="#" class="fa fa-facebook"></a></li>
+                <li><a href="#" class="fa fa-tumblr"></a></li>
+                <li><a href="#" class="fa fa-google-plus"></a></li>
+            </ul>
+            <div class="copyright">© <span id="copyright-year"></span> |
+                <a href="#">Privacy Policy</a>
+            </div>
         </div>
-      </div>
-    </div>
-    <a class="left carousel-control" href="#carousel1" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="right carousel-control" href="#carousel1" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span></a></div>
-  <article id="main">
-    <h1>守.护</h1>
-    <p>Maybe you are the one and only who swore that YOU would always be the company of justice.</p>
-    <p>Forever. </p>
-</article>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 col-lg-12 col-sm-4">
-        <div class="thumbnail"><img src="images/Ilya.png" alt="Thumbnail Image 1" width="100" height="200">
-          <div class="caption">
-            <h3>Illyasviel von Einzbern </h3>
-            <p>Optional content and buttons for Thumbnail #1</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a><a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
-        </div>
-  </div>
-      <div class="col-md-4 col-lg-12 col-sm-4">
-        <div class="thumbnail"><img src="images/Berserker.png" alt="Thumbnail Image 1" width="100" height="200">
-          <div class="caption">
-            <h3>Berserker (Koha-Ace)</h3>
-            <p>Optional content and buttons for Thumbnail #1</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a><a href="#" class="btn btn-default" role="button">Button</a></p>
-  </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-lg-12 col-sm-4">
-        <div class="thumbnail"><img src="images/Emiya_shiro.png" alt="Thumbnail Image 1" width="100" height="200">
-          <div class="caption">
-            <h3>Shirou Emiya(衛宮士郎)</h3>
-            <p>Optional content and buttons for Thumbnail #1</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a><a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-lg-12 col-sm-4">
-        <div class="thumbnail"><img src="images/Tohsaka_rin.png" alt="Thumbnail Image 1" width="100" height="200">
-          <div class="caption">
-            <h3>Rin Tohsaka(遠坂 凛)</h3>
-            <p>Optional content and buttons for Thumbnail #1</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a><a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-lg-12 col-sm-4">
-        <div class="thumbnail"><img src="images/Saber_2.png" alt="Thumbnail Image 1" width="100" height="200">
-          <div class="caption">
-            <h3>Saber</h3>
-            <p>Optional content and buttons for Thumbnail #1</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a><a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-lg-12 col-sm-4">
-        <div class="thumbnail"><img src="images/Gilfull.png" alt="Thumbnail Image 1" width="100" height="200">
-          <div class="caption">
-            <h3>Gilgamesh</h3>
-            <p>Optional content and buttons for Thumbnail #1</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a><a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <footer class="footer" style="font-size: 16px">&copy;<strong>Copyright 2015 </strong></footer>
+        <div class="tm"><a href="#"><img src="images/TM_logo.png" alt=""></a></div>
+    </footer>
 </div>
-<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.js" type="text/javascript"></script>
+
+<script src="js/script.js"></script>
 </body>
 </html>
