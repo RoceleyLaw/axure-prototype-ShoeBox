@@ -6,14 +6,14 @@
                       Main Styles
 =========================================================*/
 body {
-  background: #a95858;
-  color: #333;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 400px;
-  -webkit-text-size-adjust: none;
-  color: #5f5e4e;
+	background-color: #7A0E2C;
+	color: #333;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: 400px;
+	-webkit-text-size-adjust: none;
+	color: #5f5e4e;
 }
 img {
   max-width: 100%;
@@ -34,11 +34,13 @@ h2 {
   }
 }
 h2 em {
-  display: block;
-  font-family: 'Yesteryear', cursive;
-  font-size: 100px;
-  line-height: 82px;
-  font-weight: 400;
+	display: block;
+	font-family: abril-fatface;
+	font-size: 100px;
+	line-height: 82px;
+	font-weight: 400;
+	font-style: normal;
+	color: #F7EEEE;
 }
 @media (max-width: 767px) {
   h2 em {
@@ -129,7 +131,9 @@ a {
   transition: 0.3s;
 }
 a:active {
-  background: transparent;
+	background: transparent;
+	font-style: oblique;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
 }
 a[href^="tel:"] {
   color: inherit;
@@ -143,8 +147,9 @@ a[href^="tel:"] {
   font-family: 'FontAwesome';
 }
 .page {
-  overflow: hidden;
-  min-height: 500px;
+	overflow: hidden;
+	min-height: 500px;
+	background-color: #7A0E2C;
 }
 .lt-ie9 .page {
   min-width: 1200px;
@@ -173,7 +178,8 @@ a[href^="tel:"] {
 }
 @media (max-width: 1199px) {
   .indents-3 {
-    padding: 0;
+	padding: 0;
+	color: #F7E8E8;
   }
 }
 /*=======================================================
@@ -536,7 +542,7 @@ a[href^="tel:"] {
                      HEADER  Section
 =========================================================*/
 header {
-  background: #a95858;
+	background-color: #7A0E2C;
 }
 header .brand {
   float: left;
@@ -575,7 +581,8 @@ header .nav {
   margin-top: 46px;
 }
 * + h2 {
-  margin-top: 138px;
+	margin-top: 138px;
+	color: #EFECEC;
 }
 * + h3 {
   margin-top: 10px;
@@ -620,8 +627,8 @@ p + .img {
                      CONTENT  Styles
 =========================================================*/
 main {
-  display: block;
-  background: #ffffff;
+	display: block;
+	background-color: #7A0E2C;
 }
 /*==================      Well     ======================*/
 .well {
@@ -634,7 +641,8 @@ main {
   padding: 141px 0 67px 0;
 }
 .well__offset-3 {
-  padding: 131px 0 129px 0;
+	padding: 131px 0 129px 0;
+	text-shadow: 0px 0px #463132;
 }
 .well__offset-4 {
   padding: 116px 0 129px 0;
@@ -946,8 +954,8 @@ footer .tm {
   margin-top: 20px;
 }
 .bg-1 {
-  background: #a95858;
-  color: #ffffff;
+	background-color: #7A0E2C;
+	color: #ffffff;
 }
 .bg-1 h2 {
   color: #ffffff;

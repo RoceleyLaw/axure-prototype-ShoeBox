@@ -100,10 +100,12 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
+	display: block;
+	color: #F3ECED;
 }
 body {
-  line-height: 1;
+	line-height: 1;
+	background-color: #7A0E2C;
 }
 ol,
 ul {
