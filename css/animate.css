@@ -507,6 +507,15 @@ Copyright (c) 2014 Daniel Eden
   -webkit-animation-name: wobble;
   animation-name: wobble;
 }
+.brand.wow.fadeIn .brand_name a {
+}
+.brand.wow.fadeIn .brand_name a {
+	font-family: allan;
+	font-style: normal;
+	font-weight: 700;
+}
+
+
 
 @-webkit-keyframes bounceIn {
   0%, 20%, 40%, 60%, 80%, 100% {
