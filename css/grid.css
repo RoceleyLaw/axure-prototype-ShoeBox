@@ -89,6 +89,18 @@ video {
   font: inherit;
   vertical-align: top;
 }
+.page header #stuck_container {
+}
+.page header #stuck_container {
+	background-color: #7A0E2C;
+}
+.brand .brand_name a {
+	font-weight: 400;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+}
+
+
+
 article,
 aside,
 details,
@@ -100,10 +112,12 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
+	display: block;
+	color: #F3ECED;
 }
 body {
-  line-height: 1;
+	line-height: 1;
+	background-color: #7A0E2C;
 }
 ol,
 ul {
@@ -313,7 +327,7 @@ table {
 @media (min-width: 980px) and (max-width: 1199px) {
   .container,
   .container-fluid {
-    width: 940px;
+	width: 940px;
   }
   .container .row {
     margin-left: -20px;
