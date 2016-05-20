@@ -1,291 +1,358 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Home</title>
-    <meta charset="utf-8">
-    <meta name="format-detection" content="telephone=no"/>
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/camera.css">
-    <link rel="stylesheet" href="css/jquery.fancybox.css">
+    <title>Untitled Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link type="text/css" href="resources/css/reset.css" rel="Stylesheet" />
+    <link type="text/css" href="resources/css/default.css" rel="Stylesheet" />
 
-    <script src="js/jquery.js"></script>
-    <script src="js/jquery-migrate-1.2.1.js"></script>
+    <script type="text/javascript">
+        if (location.href.toString().indexOf('file://localhost/') == 0) {
+            location.href = location.href.toString().replace('file://localhost/', 'file:///');
+        }
+    </script>
 
-    <!--[if lt IE 9]>
-    <html class="lt-ie9">
-    <div style=' clear: both; text-align:center; position: relative;'>
-        <a href="http://windows.microsoft.com/en-US/internet-explorer/..">
-            <img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820"
-                 alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."/>
-        </a> 
-    </div>
-    <script src="js/html5shiv.js"></script>
-    <![endif]-->
- 
-<script src='js/device.min.js'></script> 
-<!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
-<script>var __adobewebfontsappname__="dreamweaver"</script>
-<script src="http://use.edgefonts.net/abril-fatface:n4:default;aguafina-script:n4:default;alegreya:n4:default;miama:n4:default.js" type="text/javascript"></script>
-</head>
+    <script type="text/javascript" src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="resources/scripts/player/splitter.js"></script>
+    <script type="text/javascript" src="resources/scripts/axutils.js"></script>
+    <script type="text/javascript" src="resources/scripts/player/axplayer.js"></script>
+    <script type="text/javascript" src="resources/scripts/messagecenter.js"></script>
+    <script type="text/javascript" src="data/document.js"></script>
+    <style type="text/css">
 
-<body>
-<div class="page">
-    <!--========================================================
-                              HEADER
-    =========================================================-->
-    <header>
+#outerContainer {
+	width:1000px;
+	height:1500px;
+}
 
-        <div class="camera_container">
-            <div id="camera" class="camera_wrap">
-                <div data-thumb="images/slide01_thumb.jpg" data-src="images/slide01.jpg">
-                    <div class="camera_caption fadeIn">
-                    </div>
-                </div>
-                <div data-thumb="images/slide02_thumb.jpg" data-src="images/slide02.jpg">
-                    <div class="camera_caption fadeIn">
-                    </div>
-                </div>
-                <div data-thumb="images/slide03_thumb.jpg" data-src="images/slide03.jpg">
-                    <div class="camera_caption fadeIn">
-                    </div>
-                </div>
-            </div>
+.vsplitbar {
+	width: 3px;
+	background: #B9B9B9;
+}
 
-            <div class="brand wow fadeIn">
-                <h1 class="brand_name">
-                    <a href="./">Welcome</a>
-                </h1>
-            </div>
-        </div>
+#rightPanel {
+    background-color: White;
+}
+
+#leftPanel {
+    /*min-width: 190px;*/
+}
+
+.splitterMask {
+   position:absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+   background-image: url(resources/images/transparent.gif);
+   z-index: 20000;
+}
+
+
+    </style>
+    <script type="text/javascript" language="JavaScript"><!--
+        // isolate scope
+        (function() {
+            setUpController();
+
+            var configuration = $axure.document.configuration;
+            var _settings = {};
+            _settings.projectId = configuration.prototypeId;
+            _settings.isAxshare = configuration.isAxshare;
+            _settings.loadFeedbackPlugin = configuration.loadFeedbackPlugin;
+            _settings.startCollapsed = HashString("c") == "1";
+            if(HashString("c") == "2") closePlayer();
+
+            $axure.player.settings = _settings;
+
+            $(window).bind('load', function() {
+                if(CHROME_5_LOCAL && !$('body').attr('pluginDetected')) {
+                    window.location = 'resources/chrome/chrome.html';
+                }
+            });
+
+            $(document).ready(function() {
+                $axure.page.bind('load.start', mainFrame_onload);
+                $axure.messageCenter.addMessageListener(messageCenter_message);
+
+                if($axure.player.settings.loadFeedbackPlugin) {
+                    if($axure.player.settings.isAxshare) {
+                        $axure.utils.loadJS('/Scripts/plugins/feedback/feedback.js');
+                    } else {
+                        $axure.utils.loadJS('http://share.axure.com/Scripts/plugins/feedback/feedback.js');
+                    }
+                }
+
+                if(navigator.userAgent.indexOf("MSIE") >= 0) $('#outerContainer').width('100%');
+                initialize();
+                if($axure.player.settings.startCollapsed) $('#outerContainer').splitter({ sizeLeft: 0 });
+                else $('#outerContainer').splitter({ sizeLeft: 250 });
+                $('#leftPanel').width(250);
+
+                $(window).resize(function() { resizeContent(); });
+
+                $('#maximizePanelContainer').hide();
+
+                initializeLogo();
+
+                $(window).resize();
+                resizeContent();
+                //wait for ie to get to a good state and resize
+                if(IE && BROWSER_VERSION == "6.0") setTimeout(function() { $('#outerContainer').trigger('resize'); }, 30);
+
+                if($axure.player.settings.startCollapsed) {
+                    collapse();
+                    $('#leftPanel').width(0);
+                }
+            });
+        })();
+
+        var lastLeftPanelWidth = 250;
+
+        function messageCenter_message(message, data) {
+            if(message == 'expandFrame') expand();
+        }
+
+        function resizeContent() {
+            var newHeight = $(window).height();
+            var newWidth = $(window).width();
+
+            var controlContainerHeight = newHeight - 42;
+            if($('#interfaceControlFrameLogoContainer').is(':visible')) controlContainerHeight -= $('#interfaceControlFrameLogoContainer').height() + 16;
+
+            $('#outerContainer').height(newHeight).width(newWidth);
+            $('.vsplitbar').height(newHeight);
+            $('#leftPanel').height(newHeight);
+            $('#interfaceControlFrame').height(newHeight);
+            $('#interfaceControlFrameContainer').height(controlContainerHeight);
+
+            $('#rightPanel').height(newHeight);
+            $('#mainFrame').height(newHeight);
+
+            if($('#leftPanel').is(':visible')) $('#rightPanel').width($(window).width() - $('#leftPanel').width() - $('.vsplitbar').width());
+            else $('#rightPanel').width($(window).width());
+        }
+
+        function closePlayer() {
+            if($axure.page.location) window.location.href = $axure.page.location;
+            else {
+                var pageFile = getInitialUrl();
+                var currentLocation = window.location.toString();
+                window.location.href = currentLocation.substr(0, currentLocation.lastIndexOf("/") + 1) + pageFile;
+            }
+        }
+
+        function replaceHash(newHash) {
+            var currentLocWithoutHash = window.location.toString().split('#')[0];
+
+            //We use replace so that every hash change doesn't get appended to the history stack.
+            //We use replaceState in browsers that support it, else replace the location
+            if(typeof window.history.replaceState != 'undefined') {
+                try {
+                    //Chrome 45 (Version 45.0.2454.85 m) started throwing an error here when generated locally (this only happens with sitemap open) which broke all interactions.
+                    //try catch breaks the url adjusting nicely when the sitemap is open, but all interactions and forward and back buttons work.
+                    //Uncaught SecurityError: Failed to execute 'replaceState' on 'History': A history state object with URL 'file:///C:/Users/Ian/Documents/Axure/HTML/Untitled/start.html#p=home' cannot be created in a document with origin 'null'.
+                    window.history.replaceState(null, null, currentLocWithoutHash + newHash);
+                } catch(ex) {}
+            } else {
+                window.location.replace(currentLocWithoutHash + newHash);
+            }
+        }
+
+        function collapse() {
+            var currentHash = window.location.hash;
+            //If the collapse hash string var isn't present and set to 1, insert it
+            if (currentHash.indexOf('#c=1') == -1 && currentHash.indexOf('&c=1') == -1) {
+                var hashToSet = '';
+
+                var varIndex = currentHash.indexOf('#c=');
+                if (varIndex == -1) varIndex = currentHash.indexOf('&c=');
+                if (varIndex != -1) {
+                    var newHash = currentHash.substring(0, varIndex);
+
+                    newHash = newHash == '' ? '#c=1' : newHash + '&c=1';
+
+                    var ampIndex = currentHash.indexOf('&', varIndex + 1);
+                    if (ampIndex != -1) {
+                        newHash = newHash + currentHash.substring(ampIndex);
+                    }
+                    hashToSet = newHash;
+                } else if (currentHash.indexOf('#') != -1) {
+                    hashToSet = currentHash + '&c=1';
+                } else {
+                    hashToSet = '#c=1';
+                }
+
+                if (hashToSet != '') {
+                    replaceHash(hashToSet);
+                }
+            }
+
+            $('#maximizePanelContainer').show();
+            lastLeftPanelWidth = $('#leftPanel').width();
+            $('#leftPanel').hide();
+            $('.vsplitbar').hide();
+            $('#rightPanel').width($(window).width());
+            $(window).resize();
+            $('#outerContainer').trigger('resize');
+        }
+
+        function expand() {
+            var currentHash = self.location.hash;
+            var varIndex = currentHash.indexOf('&c=');
+            if (varIndex == -1) varIndex = currentHash.indexOf('#c=');
+            //If the collapse hash string var is present, remove it
+            if (varIndex != -1) {
+                var newHash = currentHash.substring(0, varIndex);
+
+                var ampIndex = currentHash.indexOf('&', varIndex + 1);
+                if (ampIndex != -1) {
+                    newHash = newHash == '' ? '#' + currentHash.substring(ampIndex + 1) : newHash + currentHash.substring(ampIndex);
+                }
+
+                replaceHash(newHash);
+            }
+
+            $('#maximizePanelContainer').hide();
+            $('#leftPanel').width(lastLeftPanelWidth);
+            $('#leftPanel').show();
+            $('.vsplitbar').show();
+            $('#rightPanel').width($(window).width() - $('#leftPanel').width() - $('.vsplitbar').width());
+            $(window).resize();
+            $('#outerContainer').trigger('resize');
+        }
+
+        function initialize() {
+            var legacyQString = QueryString("Page");
+            if (legacyQString.length > 0) {
+                location.href = location.href.substring(0, location.href.indexOf("?")) + "#p=" + legacyQString;
+                return;
+            }
+
+            var mainFrame = document.getElementById("mainFrame");
+            mainFrame.contentWindow.location.href = getInitialUrl();
+        }
         
-        <div class="toggle-menu-container">
-            <nav class="nav">
-                <div class="nav_title"></div>
-                <a class="sf-menu-toggle fa fa-bars" href="#"></a>
-                <ul class="sf-menu">
-                    <li class="active">
-                        <a href="./">Home</a>
-                    </li>
-                    <li>
-                        <a href="index-1.html">About</a>
-                        <ul>
-                            <li>
-                                <a href="#">Step 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Step 2</a>
-                                <ul>
-                                    <li>
-                                        <a href="#">SUB-Step 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">SUB-Step 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">SUB-Step 3</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">HELLO</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="index-2.html">COME</a>
-                    </li>
-                    <li>
-                        <a href="index-3.html">ABOUT ME</a>
-                    </li>
-                    <li>
-                        <a href="index-4.html">Contacts</a>
-                    </li>
-                </ul>
-            </nav>            
-        </div>
+        function getInitialUrl() {
+            var pageName = HashString("p");
+            if(pageName.length > 0) return pageName + ".html";
+            else {
+                var url = getFirstPageUrl($axure.document.sitemap.rootNodes);
+                return (url ? url : "about:blank");
+            }
+        }
 
-    </header>
-    <!--========================================================
-                              CONTENT
-    =========================================================-->
-    <main>
-        <section class="well">
-            <div class="container">
-              <h2><em>Welcome</em>to My Place</h2>
-              <div class="row">
-                    <div class="grid_6">
-                        <div class="img img__border"><div class="lazy-img" style="padding-bottom: 63.0282%;"><img data-src="images/page-1_img01.jpg" alt=""></div></div>
-                        <p class="center indents-1">Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla. Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis.Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla.</p>
-                </div>
-                    <div class="grid_6">
-                        <div class="img img__border"><div class="lazy-img" style="padding-bottom: 63.0282%;"><img data-src="images/page-1_img02.jpg" alt=""></div></div>
-                        <p class="center indents-1">Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla. Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis.Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla.</p>
-                    </div>
-              </div>
-              <div class="decoration"><a href="#" class="btn">Read more</a></div>
-                <h2><em>My</em>Photography</h2>
-            </div>            
-            <div class="gallery">
-                <div class="gallery_col-1">
-                    <a data-fancybox-group="gallery" href="images/page-1_img03_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 93.96551724137931%;">
-                        <img data-src="images/page-1_img03.jpg" alt="">
-                        <div class="gallery_overlay">
-                            <div class="gallery_caption">
-                                <p><em>Lorem Blandit</em></p>
-                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a data-fancybox-group="gallery" href="images/page-1_img04_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 74.13793103448276%;">
-                        <img data-src="images/page-1_img04.jpg" alt="">
-                        <div class="gallery_overlay">
-                            <div class="gallery_caption">
-                                <p><em>Lorem Blandit</em></p>
-                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a data-fancybox-group="gallery" href="images/page-1_img05_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 94.6551724137931%;">
-                        <img data-src="images/page-1_img05.jpg" alt="">
-                        <div class="gallery_overlay">
-                            <div class="gallery_caption">
-                                <p><em>Lorem Blandit</em></p>
-                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="gallery_col-2">
-                    <a data-fancybox-group="gallery" href="images/page-1_img06_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 52.48322147651007%;">
-                        <img data-src="images/page-1_img06.jpg" alt="">
-                        <div class="gallery_overlay">
-                            <div class="gallery_caption">
-                                <p><em>Lorem Blandit</em></p>
-                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a data-fancybox-group="gallery" href="images/page-1_img07_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 55.97315436241611%;">
-                        <img data-src="images/page-1_img07.jpg" alt="">
-                        <div class="gallery_overlay">
-                            <div class="gallery_caption">
-                                <p><em>Lorem Blandit</em></p>
-                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a data-fancybox-group="gallery" href="images/page-1_img08_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 96.10738255033557%;">
-                        <img data-src="images/page-1_img08.jpg" alt="">
-                        <div class="gallery_overlay">
-                            <div class="gallery_caption">
-                                <p><em>Lorem Blandit</em></p>
-                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="gallery_col-3">
-                    <a data-fancybox-group="gallery" href="images/page-1_img09_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 93.69676320272572%;">
-                        <img data-src="images/page-1_img09.jpg" alt="">
-                        <div class="gallery_overlay">
-                            <div class="gallery_caption">
-                                <p><em>Lorem Blandit</em></p>
-                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a data-fancybox-group="gallery" href="images/page-1_img10_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 72.23168654173765%;">
-                        <img data-src="images/page-1_img10.jpg" alt="">
-                        <div class="gallery_overlay">
-                            <div class="gallery_caption">
-                                <p><em>Lorem Blandit</em></p>
-                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a data-fancybox-group="gallery" href="images/page-1_img11_original.jpg" class="gallery_item thumb lazy-img" style="padding-bottom: 93.69676320272572%;">
-                        <img data-src="images/page-1_img11.jpg" alt="">
-                        <div class="gallery_overlay">
-                            <div class="gallery_caption">
-                                <p><em>Lorem Blandit</em></p>
-                                <p>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-        <section class="parallax parallax1" data-parallax-speed="-0.4">
-            <div class="container">
-              <h2><em>My</em>Experience</h2>
-              <p class="indents-2">Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla. Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis.Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla. Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis. Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis.Integer convallis orci </p>
-                <a href="#" class="btn">View full menu</a>
-            </div>
-        </section>
-        <section class="well well__offset-1 bg-1">
-            <div class="container">
-              <h2><em>My</em>Stories</h2>
-              <div class="row row__offset-1">
-                    <div class="grid_4">
-                        <figure>
-                            <div class="img lazy-img" style="padding-bottom: 101.0810810810811%;"><img data-src="images/page-1_img12.jpg" alt=""></div>
-                            <figcaption>HELLO PANDA </figcaption>
-                        </figure>
-                        <h3>Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl </h3>
-                        <p>Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis.Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla.</p>
-                    </div>
-                    <div class="grid_4">
-                        <figure>
-                            <div class="img lazy-img" style="padding-bottom: 101.0810810810811%;"><img data-src="images/page-1_img13.jpg" alt=""></div>
-                            <figcaption>HELLO RABBIT </figcaption>
-                        </figure>
-                        <h3>Oeteger convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl </h3>
-                        <p>Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis.Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla.</p>
-                    </div>
-                    <div class="grid_4">
-                        <figure>
-                            <div class="img lazy-img" style="padding-bottom: 101.0810810810811%;"><img data-src="images/page-1_img14.jpg" alt=""></div>
-                            <figcaption>HELLO PIKACHIU </figcaption>
-                        </figure>
-                        <h3>Koteger convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl </h3>
-                        <p>Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis.Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla.</p>
-                    </div>
-                </div>
-                <div class="decoration"><a href="#" class="btn">Read more</a></div>
-            </div>
-        </section>
-        <section class="well well__offset-2">
-            <div class="container center">
-              <h2><em>Call</em>as a friend of mine</h2>
-              <p class="indents-2">Fnteger convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol. sed,pharetra venenatis nulla. Vestibulum volutpat turpis ut massa commodo, quis aliquam massa facilisis.Integer convallis orci vel mi nelaoreet, at ornare lorem consequat. Phasellus era nisl auctor vel veliterol.</p>
-                <address class="address-1">
-                    <dl><dt>Address:</dt> <dd>4578 Marmora Road, Glasgow DA04 89GR</dd></dl>
-                    <p><em>123 223 2223</em></p>
-                </address>
-            </div>
-        </section>
-    </main>
+        function getFirstPageUrl(nodes) {
+            for (var i = 0; i < nodes.length; i++) {
+                var node = nodes[i];
+                if (node.url) return node.url;
+                else {
+                    var hasChildren = (node.children && node.children.length > 0);
+                    if (hasChildren) {
+                        var url = getFirstPageUrl(node.children);
+                        if (url) return url;
+                    }
+                }
+            }
+            return null;
+        }
 
-    <!--========================================================
-                              FOOTER
-    =========================================================-->
-    <footer>
-        <div class="container">
-            <ul class="socials">
-                <li><a href="#" class="fa fa-facebook"></a></li>
-                <li><a href="#" class="fa fa-tumblr"></a></li>
-                <li><a href="#" class="fa fa-google-plus"></a></li>
-            </ul>
-            <div class="copyright">© <span id="copyright-year"></span> |
-                <a href="#">Privacy Policy</a>
+        function initializeLogo() {
+            if($axure.document.configuration.logoImagePath) {
+                $('#interfaceControlFrameLogoImageContainer').html('<img id="logoImage" src="" />');
+                $('#logoImage').attr('src', $axure.document.configuration.logoImagePath).load(function() { resizeContent(); });
+                $('#interfaceControlFrameMinimizeContainer').css('background-color', '#FFFFFF');
+            } else $('#interfaceControlFrameLogoImageContainer').hide();
+
+            if ($axure.document.configuration.logoImageCaption) {
+                $('#interfaceControlFrameLogoCaptionContainer').html($axure.document.configuration.logoImageCaption);
+                $('#interfaceControlFrameMinimizeContainer').css('background-color', '#FFFFFF');
+            } else $('#interfaceControlFrameLogoCaptionContainer').hide();
+
+            if(!$('#interfaceControlFrameLogoImageContainer').is(':visible') && !$('#interfaceControlFrameLogoCaptionContainer').is(':visible')) {
+                $('#interfaceControlFrameLogoContainer').hide();
+            }
+        }
+
+        function mainFrame_onload() {
+            if($axure.page.pageName) document.title = $axure.page.pageName;
+        }
+
+        function QueryString(query) {
+            var qstring = self.location.href.split("?");
+            if(qstring.length < 2) return "";
+            return GetParameter(qstring, query);
+        }
+        
+        function GetParameter(qstring, query) {
+            var prms = qstring[1].split("&");
+            var frmelements = new Array();
+            var currprmeter, querystr = "";
+
+            for(var i = 0; i < prms.length; i++) {
+                currprmeter = prms[i].split("=");
+                frmelements[i] = new Array();
+                frmelements[i][0] = currprmeter[0];
+                frmelements[i][1] = currprmeter[1];
+            }
+
+            for(j = 0; j < frmelements.length; j++) {
+                if(frmelements[j][0].toLowerCase() == query.toLowerCase()) {
+                    querystr = frmelements[j][1];
+                    break;
+                }
+            }
+            return querystr;
+        }
+        
+        function HashString(query) {
+            var qstring = self.location.href.split("#");
+            if(qstring.length < 2) return "";
+            return GetParameter(qstring, query);
+        }
+
+    --></script>
+
+    <link type="text/css" rel="Stylesheet" href="plugins/sitemap/styles/sitemap.css" />
+    <script type="text/javascript" src="plugins/sitemap/sitemap.js"></script>
+    <link type="text/css" rel="Stylesheet" href="plugins/page_notes/styles/page_notes.css" />
+    <script type="text/javascript" src="plugins/page_notes/page_notes.js"></script>
+
+</head>
+<body scroll="no">
+    <div id="outerContainer">
+
+        <div id="leftPanel">
+            <div id="interfaceControlFrame">
+                <div id="interfaceControlFrameMinimizeContainer">
+                    <a title="Minimize" id="interfaceControlFrameMinimizeButton" onclick="collapse();">&nbsp;</a>
+                    <div id="interfaceControlFrameCloseContainer">
+                        <a title="Close" id="interfaceControlFrameCloseButton" onclick="closePlayer();">&nbsp;</a>
+                    </div>
+                </div>
+                <div id="interfaceControlFrameLogoContainer">
+                    <div id="interfaceControlFrameLogoImageContainer"></div>
+                    <div id="interfaceControlFrameLogoCaptionContainer"></div>
+                </div>
+                <div id="interfaceControlFrameHeaderContainer">
+                    <ul id="interfaceControlFrameHeader">
+                    </ul>
+                </div>
+                <div id="interfaceControlFrameContainer">
+                </div>
             </div>
         </div>
-        <div class="tm"><a href="#"><img src="" alt=""></a></div>
-    </footer>
-</div>
+        <div id="rightPanel">
+            <iframe id="mainFrame" name="mainFrame" width="100%" height="100%" src="" frameborder="0" style="display: block;"></iframe>
+        </div>
 
-<script src="js/script.js"></script>
+    </div>
+
+    <div id="maximizePanelContainer">
+        <iframe id="expandFrame" src="resources/expand.html" width="100%" height="100%" scrolling="no" allowtransparency="true" frameborder="0"></iframe>
+    </div>
+
 </body>
 </html>
